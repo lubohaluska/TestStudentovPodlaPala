@@ -100,7 +100,7 @@ namespace TestStudentovPodlaPala
             }
             else
             {
-                return index + 1 > 0 && index + 1 < otazka.Moznosti.Length;
+                return index + 1 > 0 && index + 1 < otazka.Moznosti.Length + 1;
             }
         }
     }
