@@ -12,7 +12,6 @@ namespace TestStudentovPodlaPala
         {
             Quiz q = new Quiz();
             q.SpustiQuiz();
-
         }
     }
 }
