@@ -37,14 +37,37 @@ namespace TestStudentovPodlaPala
                 Console.WriteLine(m.Text);
             }
         }
+        public virtual int VyhodnotOtazku()
+        {
+            return 0;
+        }
     }
-
+    
     class SingleOtazka: Otazka
     {
-
+        // vyhodnotenie otazky
+        public override int VyhodnotOtazku()
+        {
+            for (int i = 0; i< Odpovede.Length; i++)
+            {
+                if (this.Odpovede[i].Spravnost) return 1;
+            }
+            return 0;            
+        }
     }
     class MultiOtazka: Otazka
     {
+        // vyhodnotenie otazky
+        public override int VyhodnotOtazku()
+        {
+            int body = 0;
+            for (int i = 0; i < Odpovede.Length; i++)
+            {
+                if (this.Odpovede[i].Spravnost)body = body +1;
+                else body = body - 1;
+            }
+             return body;
+        }
 
     }
 }

@@ -33,7 +33,7 @@ namespace TestStudentovPodlaPala
 
         }
 
-        public ArrayList Otazky;
+        public ArrayList Otazky = new ArrayList();
 
         
     }

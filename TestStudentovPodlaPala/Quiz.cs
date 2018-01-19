@@ -8,12 +8,13 @@ namespace TestStudentovPodlaPala
 {
     class Quiz
     {
+      
         private Otazka[] otazky;
 
         public Quiz()
         {
             otazky = new Otazka[2];
-            Random r = new Random();
+            Random r = new Random(0.3);
             DBOtazok db = new DBOtazok();
             ArrayList vybraneCisla = new ArrayList();
             for (int i=0; i<2 ; i++)
@@ -40,9 +41,26 @@ namespace TestStudentovPodlaPala
                 {
                     uzivOdpoved = Console.ReadLine();
                 } while (!skontrolujVstup(uzivOdpoved, o, out poleUzivIndexov));
-                
+                //tvorba odpovedi
+                o.Odpovede = new Moznost[poleUzivIndexov.Length];
+                for(int i = 0; i < poleUzivIndexov.Length; i++)
+                {
+                    o.Odpovede[i] = o.Moznosti[poleUzivIndexov[i] - 1];
+                }
             }
-            Console.ReadLine();
+
+            /// vyhodnoceni
+            int body = 0;
+            for (int i = 0; i < otazky.Length; i++)
+            {
+
+                body += otazky[i].VyhodnotOtazku();
+
+            }
+
+            Console.WriteLine("Dostali jste {0}", body);
+
+                Console.ReadLine();
         }
 
         private bool skontrolujVstup(string uzivVstup, Otazka otazka, out int[] poleIndexov)
